@@ -19,14 +19,14 @@ const firstPromise = new Promise((resolve, reject) => {
   document.addEventListener('click', (e) => {
     if (e.button === 0 && !clicked) {
       clicked = true;
-      resolve('First promise was resolved on a left click in the document');
+      resolve('First promise was resolved');
     }
   });
 
   // Odrzucenie po 3 sekundach, jeśli nie kliknięto
   setTimeout(() => {
     if (!clicked) {
-      reject(new Error('First promise was rejected in 3 seconds'));
+      reject(new Error('First promise was rejected'));
     }
   }, 3000);
 });
@@ -61,9 +61,7 @@ const thirdPromise = new Promise((resolve) => {
 
   const checkBoth = () => {
     if (leftClicked && rightClicked) {
-      const thirdMessage =
-        'Third promise was resolved only after both left and right clicks happened';
-      resolve(thirdMessage);
+      resolve('Third promise was resolved');
 
       document.removeEventListener('click', clickHandler);
       document.removeEventListener('contextmenu', clickHandler);
